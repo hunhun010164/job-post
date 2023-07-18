@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sudo npm run build
+                sh 'npm run build'
             }
         }
         stage('Test') {
