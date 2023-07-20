@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install -g npm'
-                sh 'npm install styled-components'
+                sh 'npm install -g npm@latest'
+                sh 'npm install styled-components@latest'
                 sh 'npm run build'
             }
         }
