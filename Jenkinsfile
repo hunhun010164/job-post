@@ -4,11 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                dir('job-post') {
-                    sh 'npm install -g npm@latest'
-                    sh 'npm install styled-components@latest'
-                    sh 'npm run build'
-                }
+                sh 'npm install -g npm@latest'
+                sh 'npm install styled-components@latest'
+                sh 'npm run build'
             }
         }
         stage('Test') {
