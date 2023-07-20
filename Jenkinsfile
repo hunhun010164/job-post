@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'cd job-post/'
                 sh 'npm install -g npm'
                 sh 'npm install styled-components'
                 sh 'npm run build'
