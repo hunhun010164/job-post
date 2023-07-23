@@ -11,9 +11,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'npm install -g npm@latest'
-                sh 'npm install styled-components@latest'
-                sh 'npm run build'
+                sh 'usr/binnpm install -g npm@latest'
+                sh 'usr/binnpm install styled-components@latest'
+                sh 'usr/binnpm run build'
             }
         }
         stage('Test') {
