@@ -11,9 +11,11 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh '/usr/bin/npm install -g npm@latest'
-                sh '/usr/bin/npm install styled-components@latest'
-                sh '/usr/bin/npm run build'
+                def npmPath = sh(returnStdout: true, script: 'which npm').trim()
+                sh '${npmPath} install -g npm@latest'
+                sh 'npm install -g npm@latest'
+                sh 'npm install styled-components@latest'
+                sh 'npm run build'
             }
         }
         stage('Test') {
