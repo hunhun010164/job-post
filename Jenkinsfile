@@ -6,9 +6,11 @@ pipeline {
             steps {
                 script {
                     def npmPath = sh(returnStdout: true, script: 'which npm').trim()
-                    sh "sudo ${npmPath} install -g npm@latest"
-                    sh "sudo ${npmPath} install styled-components@latest"
-                    sh "sudo ${npmPath} run build"
+                    withEnv(["PATH+EXTRA=${npmPath}"]) {
+                        sh "sudo ${npmPath} install -g npm@latest"
+                        sh "sudo ${npmPath} install styled-components@latest"
+                        sh "sudo ${npmPath} run build"
+                    }
                 }
             }
         }
