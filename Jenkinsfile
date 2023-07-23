@@ -1,9 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        NVM_DIR = "$HOME/.nvm"
-    }
     stages {
         stage('Build') {
             steps {
