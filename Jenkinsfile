@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                def npmPath = sh(returnStdout: true, script: 'which npm').trim()
+                script {
+                    def npmPath = sh(returnStdout: true, script: 'which npm').trim()
+                }
                 sh "sudo ${npmPath} install -g npm@latest"
                 sh 'sudo ${npmPath} install -g npm@latest'
                 sh 'sudo ${npmPath} install styled-components@latest'
