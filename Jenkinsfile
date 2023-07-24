@@ -4,9 +4,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "sudo /var/lib/jenkins/.nvm/versions/node/v18.17.0/bin/npm install -g npm@latest"
-                sh "sudo /var/lib/jenkins/.nvm/versions/node/v18.17.0/bin/npm install styled-components@latest"
-                sh "sudo /var/lib/jenkins/.nvm/versions/node/v18.17.0/bin/npm run build"
+                sh 'which npm'
+                sh 'sudo /var/lib/jenkins/.nvm/versions/node/v18.17.0/bin/npm install -g npm@latest'
+                sh 'sudo /var/lib/jenkins/.nvm/versions/node/v18.17.0/bin/npm install styled-components@latest'
+                sh 'sudo /var/lib/jenkins/.nvm/versions/node/v18.17.0/bin/npm run build'
             }
         }
         stage('Test') {
