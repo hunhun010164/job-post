@@ -1,12 +1,16 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/path/to/node/bin:/path/to/npm/bin"
+    }
+
     stages {
         stage('Build') {
             steps {
-                sh 'sudo /root/.nvm/versions/node/v18.16.1/bin/npm install -g npm@latest'
-                sh 'sudo /root/.nvm/versions/node/v18.16.1/bin/npm install styled-components@latest'
-                sh 'sudo /root/.nvm/versions/node/v18.16.1/bin/npm run build'
+                sh 'sudo npm install -g npm@latest'
+                sh 'sudo npm install styled-components@latest'
+                sh 'sudo npm run build'
             }
         }
         stage('Test') {
