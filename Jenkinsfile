@@ -9,14 +9,9 @@ pipeline {
                 sh 'sudo /var/lib/jenkins/.nvm/versions/node/v18.17.0/bin/npm run build'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-            }
-        }
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
+                sh 'aws s3 cp /var/lib/jenkins/workspace/Jobpost/out/ s3://p3l1/ --recursive'
             }
         }
     }
