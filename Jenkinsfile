@@ -1,12 +1,17 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image node:16
+            args '-u root:root'
+        }
+    }
 
     stages {
         stage('Build') {
             steps {
-                sh 'sudo /var/lib/jenkins/.nvm/versions/node/v18.17.0/bin/npm install -g npm@latest'
-                sh 'sudo /var/lib/jenkins/.nvm/versions/node/v18.17.0/bin/npm install styled-components@latest'
-                sh 'sudo /var/lib/jenkins/.nvm/versions/node/v18.17.0/bin/npm run build'
+                sh 'npm install -g npm@latest'
+                sh 'npm install styled-components@latest'
+                sh 'npm run build'
             }
         }
         stage('Deploy') {
