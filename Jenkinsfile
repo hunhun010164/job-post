@@ -9,7 +9,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker --version'
                 sh 'npm install'
                 sh 'npm run build'
             }
