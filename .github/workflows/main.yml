@@ -26,7 +26,7 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          echo ${{ secrets.S3_SECRET_ACCESS_KEY }}
+          echo ${{ secrets.S3_ACCESS_KEY }}
           aws s3 cp out/ s3://p3l1/ --recursive --region ap-southeast-2
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}
