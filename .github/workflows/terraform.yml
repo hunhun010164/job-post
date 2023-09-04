@@ -1,0 +1,35 @@
+name: Terraform Workflow
+
+on:
+  push:
+    branches:
+      - main  # 你的主分支名称
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 0.15.0  # 更改为你要使用的 Terraform 版本
+
+    - name: Terraform Init
+      run: terraform init
+      working-directory: ./terraform-directory  # 更改为你的 Terraform 配置目录
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+      working-directory: ./terraform-directory
+
+    - name: Terraform Plan
+      run: terraform plan
+      working-directory: ./terraform-directory
+
+    - name: Terraform Destroy
+      run: terraform destroy -auto-approve
+      working-directory: ./terraform-directory
